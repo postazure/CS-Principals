@@ -22,13 +22,16 @@ numbers.to_s
 #
 # puts numbers.pop
 # numbers.to_s
-
-# numbers.delete(2)
+#
+# numbers.xdelete(50)
 # numbers.to_s
 
 puts numbers.exist?(37)
 puts numbers.exist?(0)
 
-numbers.push(50)
-numbers.push(50)
-p numbers.find(50)
+words = LinkedList.new("hello")
+words.push("peanut")
+words.push("yo")
+words.to_s
+words.insert_after("hello", "poop")
+words.to_s
