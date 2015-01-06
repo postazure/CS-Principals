@@ -27,8 +27,8 @@ class LinkedList
     old_head.value
   end
 
-  def xdelete(delete_value, current_node = @head, previous_node = current_node)
-    if !current_node.next_node.nil?
+  def delete(delete_value, current_node = @head, previous_node = current_node)
+    if !current_node.nil?
       if current_node.value == delete_value
         if @head == current_node
           @head = current_node.next_node
@@ -36,16 +36,22 @@ class LinkedList
           previous_node.next_node = current_node.next_node
         end
       end
-      xdelete(delete_value, current_node.next_node, current_node)
+      delete(delete_value, current_node.next_node, current_node)
     end
   end
 
   def insert_after(find_node_value, new_node_value)
-    find_obj(find_node_value).each do |existing_node|
-      old_next = existing_node.next_node
-      new_next = Node.new(new_node_value)
-      existing_node.next_node = new_next
-      new_next.next_node = old_next
+    existing_nodes = find_obj(find_node_value)
+    return false if existing_nodes.empty?
+    existing_nodes.each do |existing_node|
+      if existing_node == @tail
+        push(new_node_value)
+      else
+        old_next = existing_node.next_node
+        new_next = Node.new(new_node_value)
+        existing_node.next_node = new_next
+        new_next.next_node = old_next
+      end
     end
   end
 
@@ -69,7 +75,7 @@ class LinkedList
     end
 
     def find_obj(find_value, current_node = @head, found_nodes = [])
-      if !current_node.next_node.nil?
+      if !current_node.nil?
         if find_value == current_node.value
           found_nodes.push(current_node)
         else
