@@ -13,6 +13,9 @@ numbers = LinkedList.new(37)
 numbers.push(50)
 numbers.push(99)
 numbers.to_s
-# 
-# numbers.unshift(2)
-# numbers.to_s
+
+numbers.unshift(2)
+numbers.to_s
+
+numbers.shift
+numbers.to_s

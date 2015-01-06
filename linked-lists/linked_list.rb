@@ -15,6 +15,12 @@ class LinkedList
     @head = new_head
   end
 
+  def shift
+    old_head = @head
+    @head = @head.next_node
+    old_head
+  end
+
   def to_s(node = @head)
     print node.value
     print (node.next_node.nil? ? "\n" : " > ")
