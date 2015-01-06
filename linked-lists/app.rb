@@ -19,3 +19,6 @@ numbers.to_s
 
 numbers.shift
 numbers.to_s
+
+numbers.pop
+numbers.to_s

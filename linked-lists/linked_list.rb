@@ -9,6 +9,20 @@ class LinkedList
     @tail = @tail.next_node
   end
 
+  def pop
+    old_tail = @tail
+    @head = pop_cycle(@head)
+    old_tail
+  end
+
+  def pop_cycle(current_node, previous_node = current_node)
+    if current_node.next_node.nil?
+      return previous_node
+    else
+      pop_cycle(current_node.next_node, current_node)
+    end
+  end
+
   def unshift(value)
     new_head = Node.new(value)
     new_head.next_node = @head
