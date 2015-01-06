@@ -11,6 +11,8 @@ require_relative "linked_list"
 #linked list
 numbers = LinkedList.new(37)
 numbers.push(50)
-numbers.to_s
 numbers.push(99)
 numbers.to_s
+# 
+# numbers.unshift(2)
+# numbers.to_s

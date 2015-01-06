@@ -4,12 +4,20 @@ class LinkedList
     @tail = @head
   end
 
-  def push value
+  def push(value)
     @tail.next_node = Node.new(value)
     @tail = @tail.next_node
   end
 
-  def to_s
-    @head.to_s
+  def unshift(value)
+    new_head = Node.new(value)
+    new_head.next_node = @head
+    @head = new_head
+  end
+
+  def to_s(node = @head)
+    print node.value
+    print (node.next_node.nil? ? "\n" : " > ")
+    to_s(node.next_node) unless node.next_node.nil?
   end
 end
