@@ -12,7 +12,7 @@ class LinkedList
   def pop
     old_tail = @tail
     @head = pop_cycle(@head)
-    old_tail
+    old_tail.value
   end
 
   def pop_cycle(current_node, previous_node = current_node)
@@ -32,12 +32,11 @@ class LinkedList
   def shift
     old_head = @head
     @head = @head.next_node
-    old_head
+    old_head.value
   end
 
   def to_s(node = @head)
-    print node.value
-    print (node.next_node.nil? ? "\n" : " > ")
+    print "#{node.value}" + (node.next_node.nil? ? "\n" : " > ")
     to_s(node.next_node) unless node.next_node.nil?
   end
 end

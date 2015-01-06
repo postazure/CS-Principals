@@ -17,8 +17,8 @@ numbers.to_s
 numbers.unshift(2)
 numbers.to_s
 
-numbers.shift
+puts numbers.shift
 numbers.to_s
 
-numbers.pop
+puts numbers.pop
 numbers.to_s
