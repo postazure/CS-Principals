@@ -9,13 +9,19 @@ class LinkedList
     to_s(current_node.next_node) unless current_node.next_node.nil?
   end
 
-
-
   def push(value)
     new_node = Node.new(value)
     @tail.next_node = new_node
     @tail = new_node
   end
+
+  def unshift(value)
+    new_node = Node.new(value)
+    new_node.next_node = @head
+    @head.prev_node = new_node
+    @head = new_node
+  end
+  
 
   def test_output
     @testing_output = []
