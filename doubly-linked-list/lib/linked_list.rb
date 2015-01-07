@@ -37,8 +37,7 @@ class LinkedList
     removed_node_prev = removed_node.prev_node
     if removed_node == @head || removed_node == @tail
       if removed_node == @head
-        @head = removed_node.next_node
-        @head.prev_node = nil
+        shift
       elsif removed_node == @tail
         @tail = removed_node.prev_node
         @tail.next_node = nil
@@ -58,5 +57,12 @@ class LinkedList
   def length(node = @head, counter = 0)
     return counter if node.nil?
     length(node.next_node, counter + 1)
+  end
+
+  def shift
+    original_head = @head
+    @head = @head.next_node
+    @head.prev_node = nil
+    original_head
   end
 end

@@ -101,8 +101,26 @@ describe LinkedList do
   end
 
   xdescribe "#reverse" do
-    xit "reversed the links for list" do
+    it "reversed the links for list" do
+      list.push("b")
+      list.push("c")
+      list.reverse
+      p list.inspect
+      expect(list.to_s).to eq "c, b, a"
+    end
+  end
 
+  describe "#shift" do
+    it "value is gone" do
+      list.push("b")
+      list.push("c")
+      list.shift
+      expect(list.to_s).to_not include "a"
+    end
+    it "returns the sifted value" do
+      list.push("b")
+      list.push("c")
+      expect(list.shift.value).to eq "a"
     end
   end
 end
