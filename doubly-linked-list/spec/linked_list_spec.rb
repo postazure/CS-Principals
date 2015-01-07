@@ -33,4 +33,13 @@ describe LinkedList do
       expect(list.to_s).to eq "z, a"
     end
   end
+
+  describe "#length" do
+    it "returns number of cells a int" do
+      list.push "b"
+      list.push "c"
+      list.push "d"
+      expect(list.length).to eq 4
+    end
+  end
 end

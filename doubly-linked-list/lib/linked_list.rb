@@ -17,11 +17,15 @@ class LinkedList
     @head = new_node
   end
 
-
   def to_s
     @to_s = ""
     output_cycle(@head)
     @to_s
+  end
+
+  def length(node = @head, counter = 0)
+    return counter if node.nil?
+    length(node.next_node, counter + 1)
   end
 
   private
