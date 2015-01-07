@@ -7,7 +7,6 @@ describe LinkedList do
     it "has 1 item" do
       expect(list.to_s).to eq "a"
     end
-
     it "has multiple items" do
       list.push("b")
       expect(list.to_s).to eq "a, b"
@@ -27,7 +26,6 @@ describe LinkedList do
       list.unshift("z")
       expect(list.to_s).to include "z"
     end
-
     it "is the new head" do
       list.unshift "z"
       expect(list.to_s).to eq "z, a"
@@ -40,6 +38,27 @@ describe LinkedList do
       list.push "c"
       list.push "d"
       expect(list.length).to eq 4
+    end
+  end
+
+  describe "#find" do
+    it "returns first node with same value" do
+      list.push("b")
+      list.push("c")
+      found_node = list.find("b")
+      expect(found_node.value).to eq "b"
+    end
+    it "returns first node with same value at head" do
+      list.push("b")
+      list.push("c")
+      found_node = list.find("a")
+      expect(found_node.value).to eq "a"
+    end
+    it "returns first node with same value at tail" do
+      list.push("b")
+      list.push("c")
+      found_node = list.find("c")
+      expect(found_node.value).to eq "c"
     end
   end
 end

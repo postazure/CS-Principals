@@ -17,6 +17,11 @@ class LinkedList
     @head = new_node
   end
 
+  def find(value, node = @head)
+    return node if node.value == value
+    find(value, node.next_node)
+  end
+
   def to_s(current_node = @head, output = "")
     return output if current_node.nil?
     output = output + "#{current_node.value}#{(", " unless current_node.next_node.nil?)}"
