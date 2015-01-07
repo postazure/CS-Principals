@@ -13,6 +13,7 @@ describe LinkedList do
     end
   end
 
+
   describe "#push" do
     it "adds 1 item list" do
       list.push("b")
@@ -59,6 +60,49 @@ describe LinkedList do
       list.push("c")
       found_node = list.find("c")
       expect(found_node.value).to eq "c"
+    end
+  end
+
+  describe "#insert_after" do
+    it "adds a value to list" do
+      list.push("b")
+      list.push("d")
+      list.insert_after("b","c")
+      expect(list.to_s).to include "c"
+    end
+
+    it "the value is stitched in" do
+      list.push("b")
+      list.push("d")
+      list.insert_after("b","c")
+      expect(list.to_s).to eq "a, b, c, d"
+    end
+  end
+
+  describe "#delete" do
+    it "node is removed from list" do
+      list.push("b")
+      list.push("c")
+      list.delete("b")
+      expect(list.to_s).to_not include "b"
+    end
+    it "node head is removed from list" do
+      list.push("b")
+      list.push("c")
+      list.delete("a")
+      expect(list.to_s).to_not include "a"
+    end
+    it "node tail is removed from list" do
+      list.push("b")
+      list.push("c")
+      list.delete("c")
+      expect(list.to_s).to_not include "c"
+    end
+  end
+
+  xdescribe "#reverse" do
+    xit "reversed the links for list" do
+
     end
   end
 end
