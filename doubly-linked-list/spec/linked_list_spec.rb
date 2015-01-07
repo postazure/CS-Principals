@@ -5,12 +5,12 @@ describe LinkedList do
   let(:list) {LinkedList.new("a")}
   describe "#to_s" do
     it "has 1 item" do
-      expect(list.test_output).to eq "a"
+      expect(list.to_s).to eq "a"
     end
 
     it "has multiple items" do
       list.push("b")
-      expect(list.test_output).to eq "a, b"
+      expect(list.to_s).to eq "a, b"
     end
   end
 
@@ -18,19 +18,19 @@ describe LinkedList do
     it "adds 1 item list" do
       list.push("b")
       list.push("c")
-      expect(list.test_output).to eq "a, b, c"
+      expect(list.to_s).to eq "a, b, c"
     end
   end
 
   describe "#unshift" do
     it "has a next value of the previous head" do
       list.unshift("z")
-      expect(list.test_output).to include "z"
+      expect(list.to_s).to include "z"
     end
 
     it "is the new head" do
       list.unshift "z"
-      expect(list.test_output).to eq "z, a"
+      expect(list.to_s).to eq "z, a"
     end
   end
 end

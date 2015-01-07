@@ -4,11 +4,6 @@ class LinkedList
     @tail = @head
   end
 
-  def to_s(current_node = @head)
-    print "#{current_node.value}" + (current_node.next_node.nil? ? "\n" : ", ")
-    to_s(current_node.next_node) unless current_node.next_node.nil?
-  end
-
   def push(value)
     new_node = Node.new(value)
     @tail.next_node = new_node
@@ -21,17 +16,17 @@ class LinkedList
     @head.prev_node = new_node
     @head = new_node
   end
-  
 
-  def test_output
-    @testing_output = []
-    test_output_cycle(@head)
-    @testing_output.join.strip
+
+  def to_s
+    @to_s = ""
+    output_cycle(@head)
+    @to_s
   end
 
   private
-  def test_output_cycle(current_node)
-    @testing_output << "#{current_node.value}" + (current_node.next_node.nil? ? "\n" : ", ")
-    test_output_cycle(current_node.next_node) unless current_node.next_node.nil?
+  def output_cycle(current_node)
+    @to_s = @to_s + "#{current_node.value}#{(", " unless current_node.next_node.nil?)}"
+    output_cycle(current_node.next_node) unless current_node.next_node.nil?
   end
 end
