@@ -17,20 +17,14 @@ class LinkedList
     @head = new_node
   end
 
-  def to_s
-    @to_s = ""
-    output_cycle(@head)
-    @to_s
+  def to_s(current_node = @head, output = "")
+    return output if current_node.nil?
+    output = output + "#{current_node.value}#{(", " unless current_node.next_node.nil?)}"
+    to_s(current_node.next_node, output)
   end
 
   def length(node = @head, counter = 0)
     return counter if node.nil?
     length(node.next_node, counter + 1)
-  end
-
-  private
-  def output_cycle(current_node)
-    @to_s = @to_s + "#{current_node.value}#{(", " unless current_node.next_node.nil?)}"
-    output_cycle(current_node.next_node) unless current_node.next_node.nil?
   end
 end
