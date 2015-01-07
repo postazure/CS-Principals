@@ -31,10 +31,17 @@ numbers.to_s
 
 words = LinkedList.new("hello")
 words.push("peanut")
+words.push("hat")
+words.push("pepper")
 words.push("yo")
+# words.to_s
+# words.exist?("yo")
+# words.insert_after("yo", "poop")
+# words.to_s
+p words.delete("pepper")
 words.to_s
-words.exist?("yo")
-words.insert_after("yo", "poop")
-words.to_s
-words.delete("poop")
-words.to_s
+puts words.length
+
+words.reverse
+puts
+puts words.to_s

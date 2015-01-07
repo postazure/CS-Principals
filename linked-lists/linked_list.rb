@@ -27,16 +27,15 @@ class LinkedList
     old_head.value
   end
 
-  def delete(delete_value, current_node = @head, previous_node = current_node)
-    if !current_node.nil?
-      if current_node.value == delete_value
-        if @head == current_node
-          @head = current_node.next_node
-        else
-          previous_node.next_node = current_node.next_node
-        end
-      end
-      delete(delete_value, current_node.next_node, current_node)
+  def delete(value)
+    before_node = find_prev_obj(value)
+
+    if before_node.nil?
+      swap = @head.next_node
+      @head.next_node = nil
+      @head = swap
+    else
+      before_node.next_node = before_node.next_node.next_node
     end
   end
 
@@ -65,7 +64,25 @@ class LinkedList
     to_s(node.next_node) unless node.next_node.nil?
   end
 
+  def length(counter = 0, node = @head)
+    return counter if node.nil?
+    length(counter + 1, node.next_node)
+  end
+
+  def reverse(node = @head)
+    if node.next_node.nil?
+      @head = node
+      return
+    end
+    reverse(node.next_node)
+    node.next_node.next_node = node
+    node.next_node = nil
+    @tail = node
+  end
+
   private
+
+
     def pop_cycle(current_node, previous_node = current_node)
       if current_node.next_node.nil?
         return previous_node
@@ -84,4 +101,11 @@ class LinkedList
       end
       found_nodes
     end
+
+    def find_prev_obj(find_value, current_node = @head)
+      return nil if @head.value == find_value
+      return current_node if current_node.next_node.value == find_value
+      find_prev_obj(find_value, current_node.next_node)
+    end
+
 end
